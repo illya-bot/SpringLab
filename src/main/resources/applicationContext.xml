@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:application.properties" />
+
+
+    <bean id="task" class="com.example.project.Task">
+        <constructor-arg name="id" value="${task.value}" />
+        <constructor-arg name="title" value="${task.title}" />
+        <constructor-arg name="description" value="${task.description}" />
+    </bean>
+
+    <bean id="project" class="com.example.project.Project">
+
+        <property name="id" value="1" />
+        <property name="name" value="Sample Project" />
+
+    </bean>
+
+    <bean id="user" class="com.example.project.User">
+        <property name="id" value="1" />
+        <property name="username" value="sil_cut" />
+        <property name="email" value="sil@gmail.com" />
+        <property name="task" ref="task" />
+        <property name="project" ref="project" />
+    </bean>
+
+
+</beans>
